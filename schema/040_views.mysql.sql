@@ -1,4 +1,23 @@
--- Auto-generated from schema-views-mysql.psd1 (map@db2f8b8)
+-- Auto-generated from schema-views-mysql.psd1 (map@62c9c93)
+-- engine: mysql
+-- table:  event_inbox
+-- Contract view for [event_inbox]
+-- Adds helper: is_failed.
+CREATE OR REPLACE ALGORITHM=MERGE SQL SECURITY INVOKER VIEW vw_event_inbox AS
+SELECT
+  id,
+  source,
+  event_key,
+  payload,
+  status,
+  attempts,
+  last_error,
+  received_at,
+  processed_at,
+  (status = 'failed') AS is_failed
+FROM event_inbox;
+
+-- Auto-generated from schema-views-mysql.psd1 (map@62c9c93)
 -- engine: mysql
 -- table:  event_inbox_metrics
 -- Aggregated metrics for [event_inbox]
@@ -39,23 +58,4 @@ SELECT
   p.p95_attempts
 FROM base b
 LEFT JOIN pcts p ON p.source = b.source;
-
--- Auto-generated from schema-views-mysql.psd1 (map@db2f8b8)
--- engine: mysql
--- table:  event_inbox
--- Contract view for [event_inbox]
--- Adds helper: is_failed.
-CREATE OR REPLACE ALGORITHM=MERGE SQL SECURITY INVOKER VIEW vw_event_inbox AS
-SELECT
-  id,
-  source,
-  event_key,
-  payload,
-  status,
-  attempts,
-  last_error,
-  received_at,
-  processed_at,
-  (status = 'failed') AS is_failed
-FROM event_inbox;
 
