@@ -1,6 +1,7 @@
--- Auto-generated from schema-map-mysql.psd1 (map@62c9c93)
+-- Auto-generated from schema-map-mysql.psd1 (map@mtime:2025-11-27T15:13:14Z)
 -- engine: mysql
 -- table:  event_inbox
+
 CREATE TABLE IF NOT EXISTS event_inbox (
   id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `source` VARCHAR(100) NOT NULL,
