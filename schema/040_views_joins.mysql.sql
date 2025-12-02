@@ -1,7 +1,7 @@
--- Auto-generated from joins-mysql.psd1 (map@mtime:2025-11-27T17:49:37Z)
+-- Auto-generated from joins-mysql.yaml (map@94ebe6c)
 -- engine: mysql
 -- view:   event_inbox_metrics
--- Aggregated metrics for [event_inbox]
+
 CREATE OR REPLACE ALGORITHM=MERGE SQL SECURITY INVOKER VIEW vw_event_inbox_metrics AS
 WITH base AS (
   SELECT
