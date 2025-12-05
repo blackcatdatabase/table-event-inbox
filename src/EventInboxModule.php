@@ -100,7 +100,7 @@ SQL;
         $hasView  = SchemaIntrospector::hasView($db, $d, $view);
 
         // Quick index/FK check â€“ generator injects names (case-sensitive per DB)
-        $expectedIdx = [ 'gin_event_inbox_payload', 'idx_event_inbox_processed', 'idx_event_inbox_status_received' ];
+        $expectedIdx = [ 'idx_event_inbox_processed', 'idx_event_inbox_status_received' ];
         if ($d->isMysql()) {
             // Drop PG-only index naming patterns (e.g., GIN/GiST)
             $expectedIdx = array_values(array_filter(
@@ -133,7 +133,7 @@ SQL;
             'columns'     => Definitions::columns(),
             'version'     => $this->version(),
             'dialects'    => [ 'mysql', 'postgres' ],
-            'indexes'     => [ 'gin_event_inbox_payload', 'idx_event_inbox_processed', 'idx_event_inbox_status_received' ],
+            'indexes'     => [ 'idx_event_inbox_processed', 'idx_event_inbox_status_received' ],
             'foreignKeys' => [],
         ];
     }
