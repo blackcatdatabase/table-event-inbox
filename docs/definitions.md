@@ -5,15 +5,15 @@ Inbox table for inbound events awaiting processing.
 ## Columns
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
-| attempts | INTEGER | NO | 0 | Number of processing attempts. |
+| attempts | INT | NO | 0 | Number of processing attempts. |
 | event_key | CHAR(36) | NO |  | Event key used for idempotency. |
 | id | BIGINT | NO |  | Surrogate primary key. |
 | last_error | TEXT | YES |  | Last error message written for the event. |
-| payload | JSONB | NO |  | JSON payload to be processed. |
-| processed_at | TIMESTAMPTZ(6) | YES |  | When processing finished (UTC). |
-| received_at | TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | When the event was received (UTC). |
+| payload | JSON | NO |  | JSON payload to be processed. |
+| processed_at | DATETIME(6) | YES |  | When processing finished (UTC). |
+| received_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | When the event was received (UTC). |
 | source | VARCHAR(100) | NO |  | Producer system identifier. |
-| status | TEXT | NO | pending | Processing status flag. (enum: pending, processed, failed) |
+| status | ENUM('pending','processed','failed') | NO | pending | Processing status flag. (enum: pending, processed, failed) |
 
 ## Engine Details
 
@@ -51,7 +51,7 @@ Indexes:
 ## Views
 | View | Engine | Flags | File |
 | --- | --- | --- | --- |
-| vw_event_inbox | mysql | algorithm=MERGE, security=INVOKER | [packages\event-inbox\schema\040_views.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/event-inbox/schema/040_views.mysql.sql) |
-| vw_event_inbox_metrics | mysql | algorithm=MERGE, security=INVOKER | [packages\event-inbox\schema\040_views_joins.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/event-inbox/schema/040_views_joins.mysql.sql) |
-| vw_event_inbox | postgres |  | [packages\event-inbox\schema\040_views.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/event-inbox/schema/040_views.postgres.sql) |
-| vw_event_inbox_metrics | postgres |  | [packages\event-inbox\schema\040_views_joins.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/event-inbox/schema/040_views_joins.postgres.sql) |
+| vw_event_inbox | mysql | algorithm=MERGE, security=INVOKER | [schema\040_views.mysql.sql](schema\040_views.mysql.sql) |
+| vw_event_inbox_metrics | mysql | algorithm=MERGE, security=INVOKER | [schema\040_views_joins.mysql.sql](schema\040_views_joins.mysql.sql) |
+| vw_event_inbox | postgres |  | [schema\040_views.postgres.sql](schema\040_views.postgres.sql) |
+| vw_event_inbox_metrics | postgres |  | [schema\040_views_joins.postgres.sql](schema\040_views_joins.postgres.sql) |
