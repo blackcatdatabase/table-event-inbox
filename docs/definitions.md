@@ -5,15 +5,15 @@ Inbox table for inbound events awaiting processing.
 ## Columns
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
-| attempts | INT | NO | 0 | Number of processing attempts. |
+| attempts | mysql: INT / postgres: INTEGER | NO | 0 | Number of processing attempts. |
 | event_key | CHAR(36) | NO |  | Event key used for idempotency. |
 | id | BIGINT | NO |  | Surrogate primary key. |
 | last_error | TEXT | YES |  | Last error message written for the event. |
-| payload | JSON | NO |  | JSON payload to be processed. |
-| processed_at | DATETIME(6) | YES |  | When processing finished (UTC). |
-| received_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | When the event was received (UTC). |
+| payload | mysql: JSON / postgres: JSONB | NO |  | JSON payload to be processed. |
+| processed_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | YES |  | When processing finished (UTC). |
+| received_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | When the event was received (UTC). |
 | source | VARCHAR(100) | NO |  | Producer system identifier. |
-| status | ENUM('pending','processed','failed') | NO | pending | Processing status flag. (enum: pending, processed, failed) |
+| status | mysql: ENUM('pending','processed','failed') / postgres: TEXT | NO | pending | Processing status flag. (enum: pending, processed, failed) |
 
 ## Engine Details
 
