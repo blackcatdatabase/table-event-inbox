@@ -82,8 +82,8 @@ _No engine differences detected._
 
 ## Constraints Snapshot
 - `attempts` – default=0
-- `status` – default=pending, enum
 - `received_at` – default=CURRENT_TIMESTAMP(6)
+- `status` – default=pending, enum
 
 ## Schema Files
 | File | Engine |
