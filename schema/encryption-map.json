@@ -1,0 +1,35 @@
+{
+  "tables": {
+    "event_inbox": {
+      "columns": {
+        "attempts": {
+          "strategy": "passthrough"
+        },
+        "event_key": {
+          "strategy": "passthrough"
+        },
+        "id": {
+          "strategy": "passthrough"
+        },
+        "last_error": {
+          "strategy": "passthrough"
+        },
+        "payload": {
+          "strategy": "passthrough"
+        },
+        "processed_at": {
+          "strategy": "passthrough"
+        },
+        "received_at": {
+          "strategy": "passthrough"
+        },
+        "source": {
+          "strategy": "passthrough"
+        },
+        "status": {
+          "strategy": "passthrough"
+        }
+      }
+    }
+  }
+}

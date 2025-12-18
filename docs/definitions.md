@@ -3,17 +3,17 @@
 Inbox table for inbound events awaiting processing.
 
 ## Columns
-| Column | Type | Null | Default | Description |
-| --- | --- | --- | --- | --- |
-| id | BIGINT | NO |  | Surrogate primary key. |
-| source | VARCHAR(100) | NO |  | Producer system identifier. |
-| event_key | CHAR(36) | NO |  | Event key used for idempotency. |
-| payload | mysql: JSON / postgres: JSONB | NO |  | JSON payload to be processed. |
-| status | mysql: ENUM('pending','processed','failed') / postgres: TEXT | NO | pending | Processing status flag. (enum: pending, processed, failed) |
-| attempts | mysql: INT / postgres: INTEGER | NO | 0 | Number of processing attempts. |
-| last_error | TEXT | YES |  | Last error message written for the event. |
-| received_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | When the event was received (UTC). |
-| processed_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | YES |  | When processing finished (UTC). |
+| Column | Type | Null | Default | Description | Crypto |
+| --- | --- | --- | --- | --- | --- |
+| id | BIGINT | NO |  | Surrogate primary key. |  |
+| source | VARCHAR(100) | NO |  | Producer system identifier. |  |
+| event_key | CHAR(36) | NO |  | Event key used for idempotency. |  |
+| payload | mysql: JSON / postgres: JSONB | NO |  | JSON payload to be processed. |  |
+| status | mysql: ENUM('pending','processed','failed') / postgres: TEXT | NO | pending | Processing status flag. (enum: pending, processed, failed) |  |
+| attempts | mysql: INT / postgres: INTEGER | NO | 0 | Number of processing attempts. |  |
+| last_error | TEXT | YES |  | Last error message written for the event. |  |
+| received_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | When the event was received (UTC). |  |
+| processed_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | YES |  | When processing finished (UTC). |  |
 
 ## Engine Details
 
